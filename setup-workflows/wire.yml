@@ -1,0 +1,37 @@
+name: Build The Wire
+# Manual refresh only — triggered by "Run workflow" button or from the site.
+on:
+  workflow_dispatch:        # Manual refresh only (no scheduled runs)
+permissions: {contents: read, pages: write, id-token: write}
+concurrency: {group: wire, cancel-in-progress: true}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        if: always()  # always run — no time check needed
+      - uses: actions/setup-python@v5
+        if: always()
+        with: {python-version: "3.12"}
+      - if: always()
+        run: pip install -r requirements.txt
+      - if: always()
+        run: python run.py --out site/index.html
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - if: always()
+        uses: actions/upload-pages-artifact@v3
+        with: {path: site}
+    outputs: {}
+  deploy:
+    needs: build
+    if: always()
+    runs-on: ubuntu-latest
+    environment: {name: github-pages}
+    steps:
+      - uses: actions/deploy-pages@v4
