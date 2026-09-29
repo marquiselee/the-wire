@@ -1,0 +1,104 @@
+# The Wire — what to watch, per tab.
+window_hours: 96          # nothing older than this is ever shown (4 days)
+keep_after_hours: 24      # items older than this stay only if buzz/importance warrant it
+keep_min_buzz: 50
+keep_min_importance: 4
+max_stories: 40
+min_stories: 20           # the page says so plainly if a tab falls short
+max_links_per_story: 3
+llm_candidates_per_tab: 70   # clusters sent to the editor model (cost control)
+model: claude-sonnet-5
+reddit_min_score: 50         # upvotes floor for a Reddit thread to be considered
+reddit_min_comments: 20
+hn_min_points: 20
+github_min_stars: 50
+
+tabs:
+  - key: health
+    tab: Health & Longevity
+    masthead: LONGEVITY WIRE
+    blurb: Longevity, fitness, skin, sexual health and new treatments
+    google_news:
+      - longevity OR healthspan OR anti-aging study
+      - exercise OR strength training study results
+      - skin aging OR skincare OR retinoid OR hair loss study
+      - erectile dysfunction OR testosterone OR sexual health treatment
+      - FDA approves treatment
+      - clinical trial results breakthrough
+      - GLP-1 OR peptides OR retatrutide
+    rss:
+      - {url: "https://www.sciencedaily.com/rss/health_medicine.xml", label: ScienceDaily}
+      - {url: "https://www.sciencedaily.com/rss/health_medicine/fitness.xml", label: ScienceDaily}
+      - {url: "https://www.sciencedaily.com/rss/health_medicine/skin_care.xml", label: ScienceDaily}
+    reddit_subs: [longevity, Biohackers, Fitness, SkincareAddiction, tressless, Testosterone, Peptides]
+    reddit_search: ["longevity study", "rapamycin", "new treatment"]
+    pubmed: >-
+      (aging[tiab] OR longevity[tiab] OR healthspan[tiab] OR senescen*[tiab] OR rapamycin[tiab]
+      OR "skin aging"[tiab] OR photoaging[tiab] OR alopecia[tiab] OR "erectile"[tiab] OR "sexual function"[tiab]
+      OR testosterone[tiab] OR "resistance training"[tiab] OR "exercise training"[tiab] OR sarcopenia[tiab]
+      OR peptide*[tiab] OR "GLP-1"[tiab]) OR (randomized controlled trial[pt] AND ("N Engl J Med"[ta]
+      OR Lancet[ta] OR JAMA[ta] OR "Nat Med"[ta] OR BMJ[ta]))
+    medrxiv_keywords: [longevity, aging, healthspan, senescence, sarcopenia, erectile, alopecia, GLP-1]
+    max_per_category: 5
+    topic_note: New research and developments in longevity and anti-aging, fitness and exercise science, personal care and cosmetic health (skin, hair), sexual health and performance, and treatments or cures for diseases and conditions.
+    editor_rules: >
+      Favor new research with results and real developments (approvals, trial readouts) over lifestyle listicles.
+      Always say whether findings are in cells, animals or people, and whether a study is observational or randomized.
+      Reject supplement and clinic marketing, influencer protocols, affiliate 'best products' lists and dosing advice.
+      Keep the mix varied across longevity, fitness, skin/hair, sexual health and disease treatment;
+      category should be one of: longevity, fitness, skin-hair, sexual-health, treatment, nutrition, other.
+
+  - key: philly
+    tab: Philadelphia
+    masthead: PHILLY WIRE
+    blurb: Philadelphia news and what the city is talking about
+    google_news:
+      - Philadelphia
+      - Philadelphia City Council OR "Mayor Parker"
+      - SEPTA
+      - Phillies OR Eagles OR Sixers OR Flyers OR "Philadelphia Union"
+    reddit_subs: [philadelphia, phillies, eagles, sixers, Flyers]
+    reddit_search: []
+    pubmed: ""
+    medrxiv_keywords: []
+    topic_note: News about the city of Philadelphia and its region, local politics, transit, schools, safety, culture and pro sports teams.
+
+  - key: crypto
+    tab: Crypto
+    masthead: CRYPTO WIRE
+    blurb: Ecosystem, policy and institutional moves. No price chatter
+    google_news:
+      - crypto regulation SEC OR CFTC
+      - stablecoin
+      - bitcoin OR ethereum OR solana partnership OR launch OR upgrade
+      - tokenization bank crypto
+    reddit_subs: [CryptoCurrency, ethereum, Bitcoin, ethfinance]
+    reddit_search: ["stablecoin", "SEC crypto"]
+    pubmed: ""
+    medrxiv_keywords: []
+    topic_note: Crypto ecosystem, regulation, major announcements and partnerships. Exclude price predictions, trading calls, memecoins and token promotion.
+
+  - key: aiprojects
+    tab: AI Projects
+    masthead: BUILT WITH AI
+    blurb: Novel things individuals and tiny teams are building with AI
+    google_news:
+      - '"built with AI" OR "I built" AI side project'
+      - indie developer AI app novel
+    hn_show: [AI, LLM, GPT, Claude, agent, model, neural, voice, local]
+    github_topics: [llm, ai, generative-ai, ai-agents, local-llm, machine-learning]
+    reddit_subs: [LocalLLaMA, SideProject, MachineLearning, ClaudeAI, StableDiffusion, singularity]
+    reddit_search: ["I built", "I made", "weekend project AI"]
+    pubmed: ""
+    medrxiv_keywords: []
+    require_project_check: true
+    max_per_category: 3
+    topic_note: Projects by individuals or very small teams (roughly 1-5 people) that use AI in a novel, useful or delightful way.
+    editor_rules: >
+      Ask of every project: is it useful, is it new, or does it do something familiar in a genuinely new way?
+      It does not have to be world-changing, but at minimum it must be interesting to a curious reader.
+      small_team = true only for an individual or a team of about five or fewer; big companies, funded
+      startups' marketing launches and enterprise products are false. Reject wrappers that only re-skin a chatbot,
+      generic 'AI for X' SaaS, prompt packs, course sellers, and listicles. Favor variety: art, science, hardware,
+      accessibility, games, education, local/offline tools, odd experiments. The headline should say what the
+      person built and what's clever about it, e.g. 'RETIRED MACHINIST TEACHES A $40 ARM TO SORT SCREWS BY SOUND'.
