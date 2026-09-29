@@ -379,5 +379,11 @@ if (!FEEDS.some(f => f.key === start)){
 }
 selectTab(start || "peptides", false);
 </script>
+  <div id="refresh"><a href="">⟳ Refresh stories</a></div>
+<script>
+  const owner = window.location.hostname.split(".")[0];
+  const repo = "the-wire";
+  document.querySelector("#refresh a").href = `https://github.com/${owner}/${repo}/actions/workflows/wire.yml`;
+</script>
 </body>
 </html>
