@@ -1,6 +1,6 @@
 # The Wire — automated build
 
-Rebuilds the Drudge-style page three times a day — 8 AM, 4 PM and midnight US Eastern — and publishes it to GitHub Pages. Actions → "Build The Wire" → Run workflow refreshes it on demand.
+Refreshes on demand when you tap the Refresh button on the site or manually run the workflow. The site includes a Refresh button (⟳) that links to the workflow run page.
 
 ## What it pulls (per tab, last 96 hours)
 | Source | How | Cost |
@@ -46,3 +46,12 @@ Note: Google News links go through news.google.com redirects to the publisher.
 3. Open an issue like: "@claude add a Sports tab covering the Phillies, Eagles, Sixers and Flyers".
    Claude opens a pull request; review and merge it; the next scheduled build (or Run workflow) publishes it.
 Only your own @claude mentions trigger it. `CLAUDE.md` tells Claude how the repo is organized.
+
+## Cost controls
+- **Reused summaries.** Each build reads the previous build's editor decisions back out of the published page
+  (a hidden `editor-cache` block) and only asks Claude about stories it has not seen before. A story that gains a new
+  report, or a change to the editor rules or model, is re-summarized. Rejected stories are remembered too.
+  The first build after setup (or after a change to the rules/model) pays for everything; later builds are mostly free.
+- **Model.** `model` in `config.yaml` is Claude Haiku 4.5 (cheap). Set it to `claude-sonnet-5-5` for sharper judgement
+  on conflicts, study details and the AI Projects rules, at roughly 3x the cost.
+- The build log ends with a line like `Editor: 41 new summaries, 187 reused from the last build`.

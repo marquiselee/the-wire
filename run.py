@@ -85,12 +85,18 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--out", default="site/index.html")
     ap.add_argument("--config", default="config.yaml"); a = ap.parse_args()
     cfg = yaml.safe_load(open(a.config))
-    reddit = sources.Reddit(); ed = editor.Editor(cfg["model"])
+    reddit = sources.Reddit(); ed = editor.Editor(cfg["model"], editor.load_cache())
     feeds = [build_tab(t, cfg, reddit, ed) for t in cfg["tabs"]]
     tpl = (pathlib.Path(__file__).parent / "template/page.html").read_text()
     out = pathlib.Path(a.out); out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(render.page(tpl, feeds, dt.datetime.now(dt.timezone.utc), round(cfg["window_hours"] / 24)))
+    html = render.page(tpl, feeds, dt.datetime.now(dt.timezone.utc), round(cfg["window_hours"] / 24))
+    out.write_text(editor.embed_cache(html, ed.export()) if ed.client else html)
+    print(f"Editor: {ed.calls} new summaries, {ed.hits} reused from the last build")
     for f in feeds: print(f"{f['tab']}: {len(f['stories'])} stories")
+    if ed.errors:
+        print(f"Editor errors: {len(ed.errors)} of {ed.calls} calls failed. First error: {ed.errors[0]}", file=sys.stderr)
+        if len(ed.errors) == ed.calls:
+            sys.exit("EVERY editor call failed - check ANTHROPIC_API_KEY, credits and the model name in config.yaml.")
 
 if __name__ == "__main__":
     main()
