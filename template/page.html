@@ -126,6 +126,11 @@ dialog::backdrop{background:var(--scrim)}
   dialog[open]{animation:rise .18s ease-out}
   @keyframes rise{from{transform:translateY(24px); opacity:.6}to{transform:none; opacity:1}}
 }
+  #refresh { position: fixed; top: 1rem; right: 1rem; z-index: 99; }
+  #refresh a { display: inline-block; padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border);
+    border-radius: 4px; text-decoration: none; color: var(--fg); font-size: 0.9rem; cursor: pointer; }
+  #refresh a:active { opacity: 0.7; }
+  @media (max-width: 600px) { #refresh { top: 0.5rem; right: 0.5rem; } #refresh a { padding: 0.4rem 0.8rem; font-size: 0.85rem; } }
 </style>
 </head>
 <body>
