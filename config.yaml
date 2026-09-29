@@ -7,7 +7,7 @@ max_stories: 40
 min_stories: 20           # the page says so plainly if a tab falls short
 max_links_per_story: 3
 llm_candidates_per_tab: 70   # clusters sent to the editor model (cost control)
-model: claude-sonnet-5
+model: claude-sonnet-5-5
 reddit_min_score: 50         # upvotes floor for a Reddit thread to be considered
 reddit_min_comments: 20
 hn_min_points: 20
