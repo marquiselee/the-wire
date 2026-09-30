@@ -102,3 +102,44 @@ tabs:
       generic 'AI for X' SaaS, prompt packs, course sellers, and listicles. Favor variety: art, science, hardware,
       accessibility, games, education, local/offline tools, odd experiments. The headline should say what the
       person built and what's clever about it, e.g. 'RETIRED MACHINIST TEACHES A $40 ARM TO SORT SCREWS BY SOUND'.
+
+  - key: realestate
+    tab: Real Estate Investing
+    masthead: LANDLORD WIRE
+    blurb: Housing markets, landlord issues, finance and rules for small landlords
+    google_news:
+      - Philadelphia housing market OR home prices OR rents
+      - Philadelphia landlord OR rental license OR "Licenses and Inspections"
+      - Philadelphia property tax OR assessment OR "Office of Property Assessment"
+      - Philadelphia City Council housing OR rental OR eviction
+      - Pennsylvania landlord tenant law OR eviction
+      - Pennsylvania OR "New Jersey" OR Delaware housing market rents
+      - US home prices OR housing market report
+      - rent prices report OR rental vacancy rate
+      - mortgage rates OR "investment property" loan OR DSCR loan
+      - small landlord OR "mom and pop landlord"
+      - landlord tax OR depreciation OR "1031 exchange" OR "rental property" IRS
+      - HUD OR "fair housing" OR "Section 8" OR "housing choice voucher" rule
+      - rent control OR "just cause eviction" OR "source of income" law
+    reddit_subs: [realestateinvesting, Landlord, RealEstate, philadelphia]
+    reddit_search: ["small landlord", "Philadelphia landlord", "rental property taxes", "duplex OR triplex OR fourplex"]
+    pubmed: ""
+    medrxiv_keywords: []
+    topic_note: >-
+      News for small residential landlords and investors: the Philadelphia housing market (prices, rents,
+      assessments, property taxes, L&I and rental licensing, city housing laws); regional markets in Pennsylvania,
+      New Jersey and Delaware; national housing, rent and mortgage-rate trends; landlord-tenant issues (evictions,
+      screening, repairs, insurance); finance for rental owners (taxes, depreciation, 1031 exchanges, financing,
+      mortgage rates, accounting and bookkeeping); and regulation (fair housing, Section 8/vouchers, rent control,
+      local, state and federal rules).
+    editor_rules: >
+      The reader owns or buys single-family homes and small multi-unit buildings (2-20 units), not institutional
+      portfolios. Favor stories that change what a small landlord pays, earns, must do or may do: new laws and
+      court rulings, tax and assessment changes, licensing and inspection rules, rent and price data, lending and
+      rate moves, insurance costs. The takeaways should say concretely what it means for a small landlord
+      (e.g. a deadline, a cost, a compliance step), especially in Philadelphia. Big REIT, Wall Street homebuyer and
+      commercial real estate news is in only when it moves local rents, prices or rules. Reject guru and course
+      marketing, 'get rich with rentals' pitches, lender and brokerage promotions, listing ads, 'best cities to
+      invest' listicles and price predictions without data. Keep Reddit threads only when they are substantive
+      landlord discussions (a tenant, tax or legal problem and useful answers). Keep the mix varied across
+      Philadelphia, regional and national markets, landlord issues, finance and regulation.
